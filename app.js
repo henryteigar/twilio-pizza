@@ -28,12 +28,19 @@ app.post('/incoming', function(req, res, next) {
 		results = findPizzas(inputData.required, inputData.banned);
 	}
 	
+	if (results[0]) {
+		reply = 'You should order: ' + results[0].name + '.';
+	}
+	else {
+		reply = 'Fuck u i dont know';
+	}
+	
 	console.log(inputData)
 	if (results) {
 		client.messages.create({
 			to: "+37253825119",
 			from: "+37259120103",
-			body: 'You should order: ' + results[0].name + '.',
+			body: reply,
 		}, function(err, message) {
 			console.log(message.sid);
 		});
