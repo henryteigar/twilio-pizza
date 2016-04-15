@@ -21,8 +21,8 @@ var client = require('twilio')(accountSid, authToken);
 
 app.post('/incoming', function(req, res, next) {
 	console.log(req.body)
-	var input = req.body.body;
-	var inputData = nlp(input);
+	var input = req.body.Body;
+	var inputData = nlp(input.toLowerCase());
 	
 	if (inputData) {
 		results = findPizzas(inputData.required, inputData.banned);
@@ -33,7 +33,7 @@ app.post('/incoming', function(req, res, next) {
 		client.messages.create({
 			to: "+37253825119",
 			from: "+37259120103",
-			body: results[0].name,
+			body: 'You should order: ' + results[0].name + '.',
 		}, function(err, message) {
 			console.log(message.sid);
 		});
