@@ -20,9 +20,18 @@ var client = require('twilio')(accountSid, authToken);
 
 
 app.post('/incoming', function(req, res, next) {
-	console.log(req.body)
+	// Handle incoming SMS messages
+	
+	if (!req.body.Body) {
+		next();
+	}
+	
+	res.json({message: 'The server successfully read the message and is now working on it'})
+
 	var input = req.body.Body;
 	var inputData = nlp(input.toLowerCase());
+	
+	var results = []; // initialize as empty array
 	
 	if (inputData) {
 		results = findPizzas(inputData.required, inputData.banned);
@@ -35,19 +44,23 @@ app.post('/incoming', function(req, res, next) {
 		reply = 'Sorry, for one reason or another, no suitable pizzas were found.';
 	}
 	
-	console.log(inputData)
 	if (results) {
 		client.messages.create({
 			to: "+37253825119",
 			from: "+37259120103",
 			body: reply,
 		}, function(err, message) {
-			console.log(message.sid);
+			if (err) {
+				console.log(err);
+			}
+			else {
+				console.log('SMS sent with sid of', message.sid);
+			}
 		});
 	}
-	res.json({message: 'yay'})
 });
 
 
 
+console.log('Listening on port', port)
 app.listen(port);
