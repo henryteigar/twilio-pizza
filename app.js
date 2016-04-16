@@ -32,7 +32,7 @@ app.post('/incoming', function(req, res, next) {
 		reply = 'You should order: ' + results[0].name + '.';
 	}
 	else {
-		reply = 'Fuck u i dont know';
+		reply = 'Sorry, for one reason or another, no suitable pizzas were found.';
 	}
 	
 	console.log(inputData)

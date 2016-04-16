@@ -22,8 +22,6 @@ function getResults(requiredIngredients, bannedIngredients) {
 }
 module.exports = getResults;
 
-console.log(getResults(['cheese'], []))
-
 
 
 function commonItems(arr1, arr2) {
