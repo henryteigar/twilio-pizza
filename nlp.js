@@ -1,12 +1,12 @@
-module.exports = input => {
-
-	input = input.replace(/pizza ?/g, '').toLowerCase();
+function nlp(input) {
+	
+	input = prepareInput(input);
 	
 	if (input.length < 3) {
 		return false;
 	}
 
-	var entities = input.split(/[,;\&]| and | or /);
+	var entities = input.split(/[\.,;\&]| and | but | or /);
 	entities = entities.filter(function(x) {
 		if (x.length == 0) {
 			return false;
@@ -69,4 +69,17 @@ module.exports = input => {
 		required: required,
 		banned: banned
 	};
+}
+module.exports = nlp;
+
+if (process.argv[2]) {
+	// commandline usage
+	console.log(nlp(process.argv[2]));
+}
+
+function prepareInput(input) {
+	input = input.toLowerCase();
+	input = input.replace(/pizza ?/g, '');
+	input = input.replace(/[\!]/g, '');
+	return input;
 }
