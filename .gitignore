@@ -2,4 +2,6 @@
 *.un~
 *.swo
 
+.env
+
 node_modules/

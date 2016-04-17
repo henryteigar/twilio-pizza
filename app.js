@@ -1,7 +1,11 @@
 var express = require('express');
 var app = express();
+var env = require('node-env-file');
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Load env variables from .env file
+env('./.env', { raise: false });
 
 
 var port = process.env.PORT || 4000;
@@ -11,8 +15,8 @@ var findPizzas = require('./pizza');
 
 
 // Twilio Credentials
-var accountSid = 'ACa14ebe13d280212fd912116878c1d8ce';
-var authToken = '1707c4a33aa42574326e75144a70c952';
+var accountSid = process.env.TWILIOSID;
+var authToken = process.env.TWILIOTOKEN;
 
 //require the Twilio module and create a REST client
 var client = require('twilio')(accountSid, authToken);
