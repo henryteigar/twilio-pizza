@@ -37,8 +37,9 @@ app.post('/incoming', function(req, res, next) {
 		results = findPizzas(inputData.required, inputData.banned);
 	}
 	
-	if (results[0]) {
-		reply = 'You should order: ' + results[0].name + '.';
+	if (results) {
+		var index = Math.floor(Math.random() * results.length);
+		reply = 'You should order: ' + results[index].name + '.';
 	}
 	else {
 		reply = 'Sorry, for one reason or another, no suitable pizzas were found.';
