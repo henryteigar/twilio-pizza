@@ -37,11 +37,14 @@ app.post('/incoming', function(req, res, next) {
 	
 	var results = []; // initialize as empty array
 	
+	console.log(input)
+	console.log(inputData)
+	
 	if (inputData) {
 		results = findPizzas(inputData.required, inputData.banned);
 	}
 	
-	if (results) {
+	if (results && results.length > 0) {
 		var index = Math.floor(Math.random() * results.length);
 		reply = 'You should order: ' + results[index].name + '.';
 	}
