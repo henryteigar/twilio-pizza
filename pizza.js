@@ -51,8 +51,3 @@ function hasAll(required, haystack) {
 
 	return true;
 }
-
-var arr1 = ['kõik, kes olid lollid', 'kõik, kes ei olnud lollid', 'kõik, kes olid targad', 'kõik, kes olid vahepealse tarkusega', 'kõik, kel polnud üldse mõistust'];
-var arr2 = ['kõik, kel polnud üldse mõistust', 'kõik, kes käisid lõbustuspargis', 'kõik, kes ei käinud'];
-
-//console.log(commonItems(arr1, arr2));
