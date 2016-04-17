@@ -54,7 +54,7 @@ app.post('/incoming', function(req, res, next) {
 	
 	if (results) {
 		client.messages.create({
-			to: "+37253825119",
+			to: req.body.From,
 			from: "+37259120103",
 			body: reply,
 		}, function(err, message) {
