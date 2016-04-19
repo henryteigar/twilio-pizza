@@ -1,5 +1,7 @@
 # Twilio-pizza
 
+[![Build Status](https://travis-ci.org/mklopets/twilio-pizza.svg?branch=master)](https://travis-ci.org/mklopets/twilio-pizza)
+
 ##### Twilio-pizza is a Node application that recommends pizzas from a built-in database, based on the user's preferences.
 
 For input, Twilio-pizza uses natural language SMS messages. It then uses a custom-built NLP module to extract basic structured information from the input, returning ``required`` ingredients and ``banned`` ingredients. Based on those, the ``pizza`` module finds and returns a list of pizzas matching the criterion. A reply is sent via SMS with the name of a suitable pizza. If there's more than one pizza matching the user's criterion, one of those is selected at random.
