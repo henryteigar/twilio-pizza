@@ -21,8 +21,8 @@ function nlp(input) {
 
 	// initialize as empty
 	// fill in iteratively below
-	var required = [];
-	var banned = [];
+	var required = [],
+		banned = [];
 
 	var currentlyAdding = 'required';
 
@@ -38,7 +38,7 @@ function nlp(input) {
 		}
 
 
-		// add with correct context
+		// store entity in correct context
 		if (currentlyAdding == 'required') {
 			if (entity.indexOf('with ') == 0) {
 				// get rid of possible 'with' string
@@ -78,8 +78,8 @@ if (process.argv[2]) {
 }
 
 function prepareInput(input) {
-	input = input.toLowerCase();
-	input = input.replace(/pizza ?/g, '');
-	input = input.replace(/[\!]/g, '');
+	input = input.toLowerCase(); // all ingredients in the database of pizzas are lowercase, too
+	input = input.replace(/pizza ?/g, ''); // ironically get rid of pizza
+	input = input.replace(/[\!]/g, ''); // we don't want users' excitement in the output
 	return input;
 }

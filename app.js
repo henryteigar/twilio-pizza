@@ -18,32 +18,33 @@ var findPizzas = require('./pizza');
 var accountSid = process.env.TWILIOSID;
 var authToken = process.env.TWILIOTOKEN;
 
-//require the Twilio module and create a REST client
+// Require the Twilio module and create a REST client
 var client = require('twilio')(accountSid, authToken);
 
 
 
 app.post('/incoming', function(req, res, next) {
-	// Handle incoming SMS messages
+	// Handle incoming SMS messages at this route
 	
 	if (!req.body.Body) {
 		next();
 	}
 	
-	res.json({message: 'The server successfully read the message and is now working on it'})
+	res.json({message: 'The server successfully read the message and is now working on it'});
 
 	var input = req.body.Body;
 	var inputData = nlp(input.toLowerCase());
 	
 	var results = []; // initialize as empty array
 	
-	console.log(input)
-	console.log(inputData)
+	console.log(input);
+	console.log(inputData);
 	
 	if (inputData) {
 		results = findPizzas(inputData.required, inputData.banned);
 	}
 	
+	// Generate the response SMS
 	if (results && results.length > 0) {
 		var index = Math.floor(Math.random() * results.length);
 		reply = 'You should order: ' + results[index].name + '.';
@@ -52,7 +53,7 @@ app.post('/incoming', function(req, res, next) {
 		reply = 'Sorry, for one reason or another, no suitable pizzas were found.';
 	}
 	
-	if (results) {
+	if (reply.length > 0) {
 		client.messages.create({
 			to: req.body.From,
 			from: "+37259120103",
@@ -70,5 +71,5 @@ app.post('/incoming', function(req, res, next) {
 
 
 
-console.log('Listening on port', port)
+console.log('Listening on port', port);
 app.listen(port);

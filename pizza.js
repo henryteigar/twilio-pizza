@@ -1,7 +1,5 @@
 var pizzas = require('./list');
 
-
-
 function getResults(requiredIngredients, bannedIngredients) {
 	return pizzas.filter(function(pizza) {
 		var matchesCriterion = true;
@@ -23,6 +21,9 @@ function getResults(requiredIngredients, bannedIngredients) {
 module.exports = getResults;
 
 
+/*
+ * Some nifty helper functions below
+ */
 
 function commonItems(arr1, arr2) {
 	// returns true if the two arrays have
@@ -43,6 +44,7 @@ function hasAll(required, haystack) {
 		var el = required[i];
 
 		if (haystack.indexOf(el) === -1) {
+			// a required element is not present in the haystack array
 			// it's okay
 			// but not really
 			return false;
