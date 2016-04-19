@@ -1,6 +1,6 @@
 {
   "name": "twilio-pizza",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "app.js",
   "dependencies": {
@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/mklopets/twilio-pizza.git"
+    "url": "git+https://github.com/mklopets/twilio-pizza.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Marko Klopets",
   "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/mklopets/twilio-pizza/issues"
   },
-  "homepage": "https://gitlab.com/mklopets/twilio-pizza#README"
+  "homepage": "https://github.com/mklopets/twilio-pizza"
 }
