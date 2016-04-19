@@ -74,7 +74,7 @@ module.exports = nlp;
 
 if (process.argv[2]) {
 	// commandline usage
-	console.log(nlp(process.argv[2]));
+	//console.log(nlp(process.argv[2]));
 }
 
 function prepareInput(input) {
