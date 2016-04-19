@@ -14,7 +14,7 @@ The program consists of 4 components:
 ## Requirements
 
 * An Internet-accessible web server with Node.js installed
-* A Twilio account with a phone number whose callback is set up to point to that server
+* A Twilio account with a phone number whose callback is set up to point to that server (by default, port 3000 with the route /incoming)
 
 ## Usage
 
@@ -23,7 +23,7 @@ The program consists of 4 components:
 * Configure your environment using the ``.env`` file. You can use ``.example.env`` as an example.
 
 ### Running the code
-* Running ``node app.js`` or just ``node`` should start the server at the specified port.
+* Running ``node app.js`` should start the server at the port specified in your ``.env`` configuration file.
 
 ### SMS input
 
