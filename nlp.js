@@ -74,12 +74,12 @@ module.exports = nlp;
 
 if (process.argv[2]) {
 	// commandline usage
-	//console.log(nlp(process.argv[2]));
+	console.log(nlp(process.argv[2]));
 }
 
 function prepareInput(input) {
 	input = input.toLowerCase(); // all ingredients in the database of pizzas are lowercase, too
-	input = input.replace(/pizza ?/g, ''); // ironically get rid of pizza
+	input = input.substring(input.indexOf('pizza') + 'pizza'.length); // ironically get rid of pizza
 	input = input.replace(/[\!]/g, ''); // we don't want users' excitement in the output
 	return input;
 }
