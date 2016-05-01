@@ -1,18 +1,13 @@
+/*
+ * The NLP (natural language processing) function takes a string as an input and then attempts to parse out the user's
+ * requirements related to pizza ingredients. It returns the results as an object with the keys 'required' and 'banned'
+ * being arrays.
+ */
 function nlp(input) {
 	
 	input = prepareInput(input);
-	
-	if (input.length < 3) {
-		return false;
-	}
 
 	var entities = input.split(/[\.,;\&]| and | but | or /);
-	entities = entities.filter(function(x) {
-		if (x.length == 0) {
-			return false;
-		}
-		return true;
-	});
 
 	// trim all input entities
 	entities = entities.map(function(x) {
@@ -20,10 +15,11 @@ function nlp(input) {
 	});
 
 	// initialize as empty
-	// fill in iteratively below
+	// filled in iteratively
 	var required = [],
 		banned = [];
 
+	// context state
 	var currentlyAdding = 'required';
 
 	for (var i in entities) {
@@ -56,7 +52,7 @@ function nlp(input) {
 	}
 
 
-	// tidy it up again
+	// tidy it up again by removing unnecessary whitespace
 
 	required = required.map(function(x) {
 		return x.trim();

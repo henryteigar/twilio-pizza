@@ -1,5 +1,9 @@
-var pizzas = require('./list');
+var pizzas = require('./list'); // array of objects, describing pizzas from Pappa Pizza
 
+/*
+ * The function getResults analyzes an array of pizzas, based on requiredIngredients and bannedIngredients, to find a
+ * list of pizzas matching the criterion.
+ */
 function getResults(requiredIngredients, bannedIngredients) {
 	return pizzas.filter(function(pizza) {
 		var matchesCriterion = true;
