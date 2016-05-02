@@ -9,4 +9,7 @@ describe('Pizza module', function() {
 	it('should not find any pizzas with Twilios', function() {
 		assert.equal(pizza(['Twilios'], []).length, 0);
 	});
+	it('should find some pizzas without Twilios', function() {
+		assert.notEqual(pizza([], []).length, 0);
+	});
 });

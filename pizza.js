@@ -26,12 +26,12 @@ module.exports = getResults;
 
 
 /*
- * Some nifty helper functions below
+ * Some nifty array helper functions below
  */
 
 function commonItems(arr1, arr2) {
 	// returns true if the two arrays have
-	//  at least one common element
+	// at least one common element
 	for (var el in arr1) {
 		if (arr2.indexOf(arr1[el]) !== -1) {
 			return true;
