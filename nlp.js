@@ -5,6 +5,9 @@
  */
 function nlp(input) {
 	
+	if (validateInput(input) == false) {
+		return { required: [], banned: [] };
+	}
 	input = prepareInput(input);
 
 	var entities = input.split(/[\.,;\&]| and | but | or /);
@@ -78,4 +81,16 @@ function prepareInput(input) {
 	input = input.substring(input.indexOf('pizza') + 'pizza'.length); // ironically get rid of pizza
 	input = input.replace(/[\!]/g, ''); // we don't want users' excitement in the output
 	return input;
+}
+
+function validateInput(input) {
+	// all input must include the word 'pizza', which may be preceded by a string of arbitrary length
+	if (input.indexOf('pizza') == -1) {
+		return false;
+	}
+	// stuff must come after the word 'pizza'
+	if (input.length == input.indexOf('pizza') + 'pizza'.length) {
+		return false;
+	}
+	return true;
 }
