@@ -84,6 +84,7 @@ function prepareInput(input) {
 }
 
 function validateInput(input) {
+	input = input.toLowerCase(); // all ingredients in the database of pizzas are lowercase, too
 	// all input must include the word 'pizza', which may be preceded by a string of arbitrary length
 	if (input.indexOf('pizza') == -1) {
 		return false;
