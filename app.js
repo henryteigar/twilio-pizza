@@ -50,7 +50,7 @@ app.post('/incoming', function(req, res, next) {
 			reply = 'You should order: ' + results[index].name + '.';
 		}
 
-		sendSMS(req.body.from, reply);
+		sendSMS(req.body.From, reply);
 		res.json({ message: 'Reply message successfully sent', reply: reply });
 	}
 	else {
